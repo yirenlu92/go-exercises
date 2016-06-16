@@ -14,11 +14,11 @@ func TestPickLargest(t *testing.T) {
 	}{
 		{
 			44,
-			"XXXXIIII",
+			"XLIV",
 		},
 		{
 			9,
-			"VIIII",
+			"IX",
 		},
 		{
 			100,
@@ -35,6 +35,18 @@ func TestPickLargest(t *testing.T) {
 		{
 			155,
 			"CLV",
+		},
+		{
+			10000,
+			"MMMMMMMMMM",
+		},
+		{
+			10001,
+			"MMMMMMMMMMI",
+		},
+		{
+			1001,
+			"MI",
 		},
 
 	}
