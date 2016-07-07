@@ -1,22 +1,26 @@
 package main
 
+import (
+	"strings"
+)
+
 var (
-	romanNumDict = map[int]string{
-		1:"I",
-		4:"IV",
-		5:"V",
-		9:"IX",
-		10:"X",
-		40:"XL",
-		50:"L",
-		90:"XC",
-		100:"C",
-		400:"CD",
-		500:"D",
-		900:"CM",
-		1000:"M",
+	arabDict = map[string]int{
+		"I":1,
+		"IV":4,
+		"V":5,
+		"IX":9,
+		"X":10,
+		"XL":40,
+		"L":50,
+		"XC":90,
+		"C":100,
+		"CD":400,
+		"D":500,
+		"CM":900,
+		"M":1000,
 	}
-	keys = []int{1000,900,500,400,100,90,50,40,10,9,5,4,1}
+	keys = []string{"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"}
 )
 
 
@@ -36,21 +40,20 @@ C placed before D or M indicates a hundred less, so four hundred is CD
 */
 
 
-func pickLargest(arabic int) (string) {
+func pickLargestGo(roman string) (int) {
 
 	var (
-		romVal int
-		emptyString = ""
+		romVal string
 	)
 
-	for _ , arab := range keys {
-		if arab <= arabic {
-			romVal = arab
-			mod := arabic - romVal
-			return romanNumDict[romVal] + pickLargest(mod)
+	for _, rom := range keys{
+		if strings.HasPrefix(roman, rom){
+			romVal = rom
+			mod := strings.TrimPrefix(roman, romVal)
+			return arabDict[romVal] + pickLargestGo(mod)
 		}
 	}
 
-	return emptyString
+	return 0
 
 }
