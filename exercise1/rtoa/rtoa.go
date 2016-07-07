@@ -40,7 +40,7 @@ C placed before D or M indicates a hundred less, so four hundred is CD
 */
 
 
-func pickLargestGo(roman string) (int) {
+func pickLargestRoman(roman string) (int) {
 
 	var (
 		romVal string
@@ -50,7 +50,7 @@ func pickLargestGo(roman string) (int) {
 		if strings.HasPrefix(roman, rom){
 			romVal = rom
 			mod := strings.TrimPrefix(roman, romVal)
-			return arabDict[romVal] + pickLargestGo(mod)
+			return arabDict[romVal] + pickLargestRoman(mod)
 		}
 	}
 

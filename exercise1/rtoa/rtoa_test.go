@@ -52,7 +52,7 @@ func TestPickLargestGo(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		output := pickLargestGo(test.input)
+		output := pickLargestRoman(test.input)
 		assert.Equal(t, test.output, output, "invalid value")
 	}
 
